@@ -28,10 +28,8 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
-    // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
   },
-  // set this to use virtual below
   {
     toJSON: {
       virtuals: true,
@@ -49,12 +47,10 @@ userSchema.pre<IUser>('save', async function (next) {
   next();
 });
 
-// custom method to compare and validate password for logging in
 userSchema.methods.isCorrectPassword = async function (password: string): Promise<boolean> {
   return await bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
 userSchema.virtual('bookCount').get(function (this: IUser) {
   return this.savedBooks.length;
 });
