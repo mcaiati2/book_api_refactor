@@ -3,7 +3,6 @@ import { GraphQLError } from 'graphql';
 import dotenv from 'dotenv';
 dotenv.config();
 export const authenticateToken = ({ req }) => {
-    // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
     if (req.headers.authorization) {
         token = token.split(' ').pop().trim();

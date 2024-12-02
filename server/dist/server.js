@@ -1,10 +1,8 @@
 import express from 'express';
 import path from 'node:path';
-// Import the ApolloServer class
-import { ApolloServer, } from '@apollo/server';
+import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { authenticateToken } from './services/auth-service.js';
-// Import the two parts of a GraphQL schema
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
 const PORT = process.env.PORT || 3001;
@@ -16,7 +14,7 @@ const app = express();
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
     await server.start();
-    await db;
+    db;
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
     app.use('/graphql', expressMiddleware(server, {
