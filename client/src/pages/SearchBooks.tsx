@@ -84,7 +84,7 @@ const SearchBooks = () => {
     <div
       style={{
         minHeight: '100vh',
-        backgroundImage: 'url(../public/images/bookshelf.jpg)',
+        backgroundImage: 'url(/images/bookshelf.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
