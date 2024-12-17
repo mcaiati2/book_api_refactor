@@ -1,10 +1,14 @@
 import express from 'express';
 import path from 'node:path';
+import { fileURLToPath } from 'url';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { authenticateToken } from './services/auth-service.js';
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
+// Create __dirname equivalent for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
     typeDefs,
@@ -21,9 +25,9 @@ const startApolloServer = async () => {
         context: authenticateToken
     }));
     if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../client/dist')));
+        app.use(express.static(path.join(__dirname, '../../client/dist')));
         app.get('*', (_req, res) => {
-            res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+            res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
         });
     }
     app.listen(PORT, () => {
