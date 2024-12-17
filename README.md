@@ -1,10 +1,10 @@
-# Google Books Search Engine
+# Book-Worm
 
 ## Description
 
 [Deployed Application Link.](https://graphql-book-refactor-v2.onrender.com)
 
-The Google Books search engine is a full-stack application that gives users to the ability to search for their favorite books and add these books to a personalized list. The application leverages the Google Books API to make this functionality possible. The application is built with a React frontend and an Express/Node.js backend, using GraphQL for API communication and MongoDB for data storage.
+Book-Worm is a full-stack application that gives users to the ability to search for their favorite books and add these books to a personalized list. The application leverages the Google Books API to make this functionality possible. The application is built with a React frontend and an Express/Node.js backend, using GraphQL for API communication and MongoDB for data storage.
 
 ## Table of Contents
 
